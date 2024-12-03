@@ -56,3 +56,8 @@ Questi indici, derivati dal sistema FWI, rappresentano condizioni ambientali che
 ## Obiettivo del modello:
 
 L'obiettivo del modello è prevedere l'area bruciata (**area**) in base alle variabili di input. Il modello tenta di identificare relazioni complesse tra fattori ambientali, indici di rischio, e caratteristiche temporali e spaziali, per stimare in modo accurato l'impatto di un incendio.
+
+
+# Note
+## NN
+Best parameters using gris search with R2 score: {'activation': 'logistic', 'alpha': 0.1, 'hidden_layer_sizes': (50,), 'learning_rate': 'constant', 'solver': 'adam'}
