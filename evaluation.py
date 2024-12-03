@@ -5,15 +5,16 @@ from sklearn.metrics import root_mean_squared_error
 from sklearn.metrics import r2_score
 
 # Valutazione performace
-def evaluate(y_test, y_pred, train_error):
+def evaluate(y_test, y_pred, y_train, y_train_pred):
 
     # R2 score
     print(f"R²: {r2_score(y_test, y_pred)}")
+    print(f"Train R²: {r2_score(y_train, y_train_pred)}")
     print('------------')
 
     # MAE.
     print('Mean Absolute Error:', mean_absolute_error(y_test, y_pred), '-> km^2 =', (np.exp(mean_absolute_error(y_test, y_pred)) - 1) / 100)
-    print(f"Train error (MAE): {train_error}")
+    print(f"Train error (MAE): {mean_absolute_error(y_train, y_train_pred)}")
     print('------------')
 
     # MSE
