@@ -2,9 +2,14 @@ import numpy as np
 
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import root_mean_squared_error
+from sklearn.metrics import r2_score
 
 # Valutazione performace
 def evaluate(y_test, y_pred, train_error):
+
+    # R2 score
+    print(f"R²: {r2_score(y_test, y_pred)}")
+    print('------------')
 
     # MAE.
     print('Mean Absolute Error:', mean_absolute_error(y_test, y_pred), '-> km^2 =', (np.exp(mean_absolute_error(y_test, y_pred)) - 1) / 100)
