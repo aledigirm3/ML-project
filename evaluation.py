@@ -30,12 +30,13 @@ def evaluate(y_test, y_pred, y_train, y_train_pred):
     # Intervalli per la tolleranza dell'errore (in %)
     tolerances = [0.05,0.1,0.3,1] 
 
-    for tolerance in tolerances:
-        # Calcolare l'errore relativo (errore assoluto / valore reale)
-        err_rel = np.abs(y_test - y_pred)
+    # Calcolare l'errore relativo (errore assoluto / valore reale)
+    err_rel = np.abs(y_test - y_pred)
 
-        # Normalizzazione Min-Max
-        err_rel_norm = (err_rel - np.min(err_rel)) / (np.max(err_rel) - np.min(err_rel))
+    # Normalizzazione Min-Max
+    err_rel_norm = (err_rel - np.min(err_rel)) / (np.max(err_rel) - np.min(err_rel))
+
+    for tolerance in tolerances:
 
         # Verifica quante previsioni sono accettabili (errore relativo <= tolleranza)
         acceptable_predictions = err_rel_norm <= tolerance
