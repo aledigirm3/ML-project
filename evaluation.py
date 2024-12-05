@@ -5,12 +5,12 @@ from sklearn.metrics import root_mean_squared_error
 from sklearn.metrics import r2_score
 
 # Valutazione performace
-def evaluate(y_test, y_pred, y_train, y_train_pred):
+def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
 
     # R2 score
-    print(f"R²: {r2_score(y_test, y_pred)}")
-    print(f"Train R²: {r2_score(y_train, y_train_pred)}")
-    print('------------')
+    #print(f"R²: {r2_score(y_test, y_pred)}")
+    #print(f"Train R²: {r2_score(y_train, y_train_pred)}")
+    #print('------------')
 
     # MAE.
     print('Mean Absolute Error:', mean_absolute_error(y_test, y_pred), '-> km^2 =', (np.exp(mean_absolute_error(y_test, y_pred)) - 1) / 100)
@@ -28,10 +28,31 @@ def evaluate(y_test, y_pred, y_train, y_train_pred):
     print('------------')
 
     # Intervalli per la tolleranza dell'errore (in %)
-    tolerances = [5,10,30,100] 
+    tolerances = [0.05,0.1,0.3,1] 
+
+    # Calcolare l'errore relativo
+    err_rel = np.abs(y_test - y_pred)
+
+    # Normalizzazione Min-Max
+    err_rel_norm = (err_rel - np.min(err_rel)) / (np.max(err_rel) - np.min(err_rel))
+
+    for tolerance in tolerances:
+
+        # Verifica quante previsioni sono accettabili (errore relativo <= tolleranza)
+        acceptable_predictions = err_rel_norm <= tolerance
+
+        # Calcolare la percentuale di previsioni accettabili
+        accuracy_percentage = np.mean(acceptable_predictions) * 100
+
+        # Stampa l'accuratezza in percentuale
+        print(f'Accuracy in percentage (with a tolerance of {tolerance * 100}%): {accuracy_percentage:.2f}%')
+   
+    
+''' 
+ tolerances = [5,10,30,100] 
 
     # Calcolare l'errore relativo (errore assoluto / valore reale)
-    percent_err = (np.abs(y_test - y_pred) / 5) * 100
+    percent_err = (np.abs(y_test - y_pred) / max_area) * 100
 
     for tolerance in tolerances:
 
@@ -43,3 +64,6 @@ def evaluate(y_test, y_pred, y_train, y_train_pred):
 
         # Stampa l'accuratezza in percentuale
         print(f'Accuracy in percentage (with a tolerance of {tolerance}%): {accuracy_percentage:.2f}%')
+
+
+        '''
