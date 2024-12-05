@@ -59,5 +59,80 @@ L'obiettivo del modello è prevedere l'area bruciata (**area**) in base alle var
 
 
 # Note
-## NN
-Best parameters using gris search with R2 score: {'activation': 'logistic', 'alpha': 0.1, 'hidden_layer_sizes': (50,), 'learning_rate': 'constant', 'solver': 'adam'}
+
+## df:
+- LINEAR REGRESSOR:
+
+Mean Absolute Error: 1.1865045061594848 -> km^2 = 0.022756112934549187
+Train error (MAE): 1.1240844078310506
+------------
+Mean Squared Error: 2.1844052584845253
+Root Mean Squared Error: 1.477973361899505 -> km^2 = 0.033840517852264676
+51 / 104 of y_test is 0
+------------
+Accuracy in percentage (with a tolerance of 5.0%): 8.65%
+Accuracy in percentage (with a tolerance of 10.0%): 17.31%
+Accuracy in percentage (with a tolerance of 30.0%): 85.58%
+Accuracy in percentage (with a tolerance of 100%): 100.00%
+=====================================
+Best parameters: {'C': 10, 'gamma': 0.01}
+- SVM:
+
+Mean Absolute Error: 1.093445581881819 -> km^2 = 0.019845398530563815
+Train error (MAE): 0.9814298262198534
+------------
+Mean Squared Error: 2.428889246437062
+Root Mean Squared Error: 1.5584894117179822 -> km^2 = 0.037516380523181125
+51 / 104 of y_test is 0
+------------
+Accuracy in percentage (with a tolerance of 5.0%): 20.19%
+Accuracy in percentage (with a tolerance of 10.0%): 47.12%
+Accuracy in percentage (with a tolerance of 30.0%): 81.73%
+Accuracy in percentage (with a tolerance of 100%): 100.00%
+=====================================
+
+
+## df_clean:
+- LINEAR REGRESSOR:
+
+Mean Absolute Error: 1.0476254112443875 -> km^2 = 0.01850873422155759
+Train error (MAE): 1.0892344598708417
+------------
+Mean Squared Error: 1.3903823061233724
+Root Mean Squared Error: 1.1791447350191462 -> km^2 = 0.022515920405119627
+57 / 102 of y_test is 0
+------------
+Accuracy in percentage (with a tolerance of 5.0%): 6.86%
+Accuracy in percentage (with a tolerance of 10.0%): 15.69%
+Accuracy in percentage (with a tolerance of 30.0%): 48.04%
+Accuracy in percentage (with a tolerance of 100%): 100.00%
+=====================================
+Best parameters: {'C': 1, 'gamma': 0.1}
+- SVM:
+
+Mean Absolute Error: 0.891557982223772 -> km^2 = 0.014389264969401693
+Train error (MAE): 0.8424871101316078
+------------
+Mean Squared Error: 1.3916464553580963
+Root Mean Squared Error: 1.179680658211406 -> km^2 = 0.022533351111325067
+57 / 102 of y_test is 0
+------------
+Accuracy in percentage (with a tolerance of 5.0%): 18.63%
+Accuracy in percentage (with a tolerance of 10.0%): 32.35%
+Accuracy in percentage (with a tolerance of 30.0%): 69.61%
+Accuracy in percentage (with a tolerance of 100%): 100.00%
+=====================================
+Best parameters: {'learning_rate': 0.01, 'max_depth': 7, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 100}
+- GRADIENT BOOST REGRESSION:
+
+Mean Absolute Error: 1.0473354705176057 -> km^2 = 0.018500469576624243
+Train error (MAE): 0.8287923209243019
+------------
+Mean Squared Error: 1.4149150429021415
+Root Mean Squared Error: 1.1895020146692235 -> km^2 = 0.022854446966737534
+57 / 102 of y_test is 0
+------------
+Accuracy in percentage (with a tolerance of 5.0%): 2.94%
+Accuracy in percentage (with a tolerance of 10.0%): 8.82%
+Accuracy in percentage (with a tolerance of 30.0%): 67.65%
+Accuracy in percentage (with a tolerance of 100%): 100.00%
