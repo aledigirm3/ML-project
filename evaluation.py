@@ -13,7 +13,8 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
     #print('------------')
 
     # MAE.
-    print('Mean Absolute Error:', mean_absolute_error(y_test, y_pred), '-> km^2 =', (np.exp(mean_absolute_error(y_test, y_pred)) - 1) / 100)
+    mae = mean_absolute_error(y_test, y_pred)
+    print('Mean Absolute Error:', mae, '-> km^2 =', (np.exp(mae) - 1) / 100)
     print(f"Train error (MAE): {mean_absolute_error(y_train, y_train_pred)}")
     print('------------')
 
@@ -27,6 +28,12 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
 
     print('------------')
 
+    # Calcola la precisione
+    precision_percentage = (1 - (mae / max_area)) * 100
+
+    print(f"Precisione del modello rispetto all'area massima: {precision_percentage:.2f}%")
+
+'''
     # Intervalli per la tolleranza dell'errore (in %)
     tolerances = [0.05,0.1,0.3,1] 
 
@@ -48,7 +55,7 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
         print(f'Accuracy in percentage (with a tolerance of {tolerance * 100}%): {accuracy_percentage:.2f}%')
    
     
-''' 
+
  tolerances = [5,10,30,100] 
 
     # Calcolare l'errore relativo (errore assoluto / valore reale)
