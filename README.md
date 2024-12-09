@@ -165,10 +165,40 @@ Accuracy in percentage (with a tolerance of 10.0%): 40.38%
 Accuracy in percentage (with a tolerance of 25.0%): 78.85%
 Accuracy in percentage (with a tolerance of 50.0%): 94.23%
 
+## v.4
+
+Questo particolare approccio si limita a previsioni si piccoli incendi (6.4 ettari circa), riducendo drasticamente il dataset.
+
+### SVM:
+
+Best parameters: {'C': 0.01, 'gamma': 0.001}
+
+Mean Absolute Error: 0.4010053357451644 -> km^2 = 0.004933252364816118
+Train error (MAE): 0.4514826550657541
+
+---
+
+Mean Squared Error: 0.44446350969154635
+Root Mean Squared Error: 0.6666809654486517 -> km^2 = 0.00947761891478207
+54 / 77 of y_test is 0
+
+---
+
+Precisione del modello rispetto all'area massima: 66.67%
+
+---
+
+Accuracy in percentage (with a tolerance of 5.0%): 70.13%
+Accuracy in percentage (with a tolerance of 10.0%): 71.43%
+Accuracy in percentage (with a tolerance of 25.0%): 75.32%
+Accuracy in percentage (with a tolerance of 50.0%): 80.52%
+
 ## Considerazioni sui risultati
 
 Come è stato gia detto questi sono i risultati migliori per quanto riguarda l'accuratezza con una bassa tolleranza.
 Si può notare come il modello migliore sia SVM. C'è però inoltre da dire che la stessa cosa non vale se vogliamo considerare la precisione rispetto
 l'area massima degli incendi e per quanto riguarda l'accuratezza con una tolleranza piu alta (es.: 25%); in tal caso risultano migliori i modelli Gradient Boost
 di regressione per quanto riguarda la versione 0, la versione 1 e la versione 3, mentre per la versione 2 risulta migliore il Regressore Lineare.
+Un'ultima considerazione va fatta sulla versione 4, nella quale la precisione rispetto l'area massima scende, ma l'accuratezza è molto piu alta degli altri modelli
+per quanto riguarda tolleranze basse, rendendolo molto piu accurato per piccoli incendi nella quale la tolleranza di area bassa è fondamentale.
 Si può concludere dicendo che il modello migliore dipende da cosa è di interesse per le previsioni e quanta tolleranza (a livello di area) siamo disposti ad accettare.
