@@ -199,6 +199,10 @@ Come è stato gia detto questi sono i risultati migliori per quanto riguarda l'a
 Si può notare come il modello migliore sia SVM. C'è però inoltre da dire che la stessa cosa non vale se vogliamo considerare la precisione rispetto
 l'area massima degli incendi e per quanto riguarda l'accuratezza con una tolleranza piu alta (es.: 25%); in tal caso risultano migliori i modelli Gradient Boost
 di regressione per quanto riguarda la versione 0, la versione 1 e la versione 3, mentre per la versione 2 risulta migliore il Regressore Lineare.
-Un'ultima considerazione va fatta sulla versione 4, nella quale la precisione rispetto l'area massima scende, ma l'accuratezza è molto piu alta degli altri modelli
+Un'ulteriore considerazione va fatta sulla versione 4, nella quale la precisione rispetto l'area massima scende, ma l'accuratezza è molto piu alta degli altri modelli
 per quanto riguarda tolleranze basse, rendendolo molto piu accurato per piccoli incendi nella quale la tolleranza di area bassa è fondamentale.
+
+Una riflessione utile da fare è che, in questo caso specifico, SVM con kernel RBF si è dimostrato il modello più performante, nonostante siano stati utilizzati anche modelli più complessi come le Reti Neurali (NN) e il Gradient Boosting (GB). Questo potrebbe essere dovuto alle caratteristiche del dataset, che presenta un numero limitato di istanze e di variabili. In questi contesti, modelli complessi come le Reti Neurali e il Gradient Boosting potrebbero non riuscire a sfruttare appieno il loro potenziale, poiché necessitano di una quantità maggiore di dati e di variabili per apprendere in modo efficace e ridurre il rischio di overfitting.
+SVM, grazie all'uso del kernel RBF, è in grado di proiettare i dati in uno spazio di alta dimensione, permettendo di modellare relazioni non lineari tra le variabili anche quando nel loro spazio originale non sono facilmente separabili. Questo gli consente di individuare pattern salienti e ottenere buone performance anche su dataset relativamente semplici e con poche caratteristiche. Tuttavia, la scelta e l'ottimizzazione dei parametri del kernel RBF (come il parametro gamma) sono fondamentali per il successo del modello.
+
 Si può concludere dicendo che il modello migliore dipende da cosa è di interesse per le previsioni e quanta tolleranza (a livello di area) siamo disposti ad accettare.
