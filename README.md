@@ -57,82 +57,118 @@ Questi indici, derivati dal sistema FWI, rappresentano condizioni ambientali che
 
 L'obiettivo del modello è prevedere l'area bruciata (**area**) in base alle variabili di input. Il modello tenta di identificare relazioni complesse tra fattori ambientali, indici di rischio, e caratteristiche temporali e spaziali, per stimare in modo accurato l'impatto di un incendio.
 
+# Migliori modelli
 
-# Note
+Stima dei migliori modelli, nei vari approcci, sulla base di tutte le statistiche (principalmente la tolleranza del 5% e 10% dell'accuratezza).
 
-## df:
-- LINEAR REGRESSOR:
+## v.0
 
-Mean Absolute Error: 1.1865045061594848 -> km^2 = 0.022756112934549187
-Train error (MAE): 1.1240844078310506
-------------
-Mean Squared Error: 2.1844052584845253
-Root Mean Squared Error: 1.477973361899505 -> km^2 = 0.033840517852264676
-51 / 104 of y_test is 0
-------------
-Accuracy in percentage (with a tolerance of 5.0%): 8.65%
-Accuracy in percentage (with a tolerance of 10.0%): 17.31%
-Accuracy in percentage (with a tolerance of 30.0%): 85.58%
-Accuracy in percentage (with a tolerance of 100%): 100.00%
-=====================================
+### SVM:
+
 Best parameters: {'C': 10, 'gamma': 0.01}
-- SVM:
 
-Mean Absolute Error: 1.093445581881819 -> km^2 = 0.019845398530563815
-Train error (MAE): 0.9814298262198534
-------------
-Mean Squared Error: 2.428889246437062
-Root Mean Squared Error: 1.5584894117179822 -> km^2 = 0.037516380523181125
+Mean Absolute Error: 1.0947580331649245 -> km^2 = 0.019884594878182008
+Train error (MAE): 0.9619051663230452
+
+---
+
+Mean Squared Error: 2.541493792715267
+Root Mean Squared Error: 1.594206320623296 -> km^2 = 0.03924419110806051
 51 / 104 of y_test is 0
-------------
-Accuracy in percentage (with a tolerance of 5.0%): 20.19%
-Accuracy in percentage (with a tolerance of 10.0%): 47.12%
-Accuracy in percentage (with a tolerance of 30.0%): 81.73%
-Accuracy in percentage (with a tolerance of 100%): 100.00%
-=====================================
 
+---
 
-## df_clean:
-- LINEAR REGRESSOR:
+Precisione del modello rispetto all'area massima: 77.21%
 
-Mean Absolute Error: 1.0476254112443875 -> km^2 = 0.01850873422155759
-Train error (MAE): 1.0892344598708417
-------------
-Mean Squared Error: 1.3903823061233724
-Root Mean Squared Error: 1.1791447350191462 -> km^2 = 0.022515920405119627
-57 / 102 of y_test is 0
-------------
-Accuracy in percentage (with a tolerance of 5.0%): 6.86%
-Accuracy in percentage (with a tolerance of 10.0%): 15.69%
-Accuracy in percentage (with a tolerance of 30.0%): 48.04%
-Accuracy in percentage (with a tolerance of 100%): 100.00%
-=====================================
+---
+
+Accuracy in percentage (with a tolerance of 5.0%): 23.08%
+Accuracy in percentage (with a tolerance of 10.0%): 44.23%
+Accuracy in percentage (with a tolerance of 25.0%): 77.88%
+Accuracy in percentage (with a tolerance of 50.0%): 92.31%
+
+## v.1
+
+### SVM:
+
 Best parameters: {'C': 1, 'gamma': 0.1}
-- SVM:
 
-Mean Absolute Error: 0.891557982223772 -> km^2 = 0.014389264969401693
-Train error (MAE): 0.8424871101316078
-------------
-Mean Squared Error: 1.3916464553580963
-Root Mean Squared Error: 1.179680658211406 -> km^2 = 0.022533351111325067
-57 / 102 of y_test is 0
-------------
-Accuracy in percentage (with a tolerance of 5.0%): 18.63%
-Accuracy in percentage (with a tolerance of 10.0%): 32.35%
-Accuracy in percentage (with a tolerance of 30.0%): 69.61%
-Accuracy in percentage (with a tolerance of 100%): 100.00%
-=====================================
-Best parameters: {'learning_rate': 0.01, 'max_depth': 7, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 100}
-- GRADIENT BOOST REGRESSION:
+Mean Absolute Error: 1.0863498908523048 -> km^2 = 0.01963437437045906
+Train error (MAE): 0.878988975927549
 
-Mean Absolute Error: 1.0473354705176057 -> km^2 = 0.018500469576624243
-Train error (MAE): 0.8287923209243019
-------------
-Mean Squared Error: 1.4149150429021415
-Root Mean Squared Error: 1.1895020146692235 -> km^2 = 0.022854446966737534
-57 / 102 of y_test is 0
-------------
-Accuracy in percentage (with a tolerance of 5.0%): 2.94%
-Accuracy in percentage (with a tolerance of 10.0%): 8.82%
-Accuracy in percentage (with a tolerance of 30.0%): 67.65%
-Accuracy in percentage (with a tolerance of 100%): 100.00%
+---
+
+Mean Squared Error: 2.485849786629047
+Root Mean Squared Error: 1.5766577899560346 -> km^2 = 0.03838756614799872
+51 / 104 of y_test is 0
+
+---
+
+Precisione del modello rispetto all'area massima: 77.46%
+
+---
+
+Accuracy in percentage (with a tolerance of 5.0%): 26.92%
+Accuracy in percentage (with a tolerance of 10.0%): 49.04%
+Accuracy in percentage (with a tolerance of 25.0%): 76.92%
+Accuracy in percentage (with a tolerance of 50.0%): 92.31%
+
+## v.2
+
+### SVM:
+
+Best parameters: {'C': 1, 'gamma': 0.1}
+
+Mean Absolute Error: 1.0463738850255944 -> km^2 = 0.018473077110773423
+Train error (MAE): 0.8885643944721647
+
+---
+
+Mean Squared Error: 2.0550198568475304
+Root Mean Squared Error: 1.4335340445373213 -> km^2 = 0.031934930266136474
+56 / 103 of y_test is 0
+
+---
+
+Precisione del modello rispetto all'area massima: 79.51%
+
+---
+
+Accuracy in percentage (with a tolerance of 5.0%): 22.33%
+Accuracy in percentage (with a tolerance of 10.0%): 43.69%
+Accuracy in percentage (with a tolerance of 25.0%): 79.61%
+Accuracy in percentage (with a tolerance of 50.0%): 95.15%
+
+## v.3
+
+### SVM:
+
+Best parameters: {'C': 1, 'gamma': 0.1}
+
+Mean Absolute Error: 1.133739043527318 -> km^2 = 0.021072529608497047
+Train error (MAE): 0.9556174749036942
+
+---
+
+Mean Squared Error: 2.505638427122861
+Root Mean Squared Error: 1.5829208530823204 -> km^2 = 0.03869157153804398
+51 / 104 of y_test is 0
+
+---
+
+Precisione del modello rispetto all'area massima: 77.37%
+
+---
+
+Accuracy in percentage (with a tolerance of 5.0%): 23.08%
+Accuracy in percentage (with a tolerance of 10.0%): 40.38%
+Accuracy in percentage (with a tolerance of 25.0%): 78.85%
+Accuracy in percentage (with a tolerance of 50.0%): 94.23%
+
+## Considerazioni sui risultati
+
+Come è stato gia detto questi sono i risultati migliori per quanto riguarda l'accuratezza con una bassa tolleranza.
+Si può notare come il modello migliore sia SVM. C'è però inoltre da dire che la stessa cosa non vale se vogliamo considerare la precisione rispetto
+l'area massima degli incendi e per quanto riguarda l'accuratezza con una tolleranza piu alta (es.: 25%); in tal caso risultano migliori i modelli Gradient Boost
+di regressione per quanto riguarda la versione 0, la versione 1 e la versione 3, mentre per la versione 2 risulta migliore il Regressore Lineare.
+Si può concludere dicendo che il modello migliore dipende da cosa è di interesse per le previsioni e quanta tolleranza (a livello di area) siamo disposti ad accettare.
