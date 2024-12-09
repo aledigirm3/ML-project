@@ -21,7 +21,8 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
     # MSE
     print('Mean Squared Error:', (root_mean_squared_error(y_test,y_pred))**2)
     # RMSE = SQRT di MSE
-    print('Root Mean Squared Error:', root_mean_squared_error(y_test,y_pred), '-> km^2 =', (np.exp(root_mean_squared_error(y_test, y_pred)) - 1) / 100)
+    rmse = root_mean_squared_error(y_test,y_pred)
+    print('Root Mean Squared Error:', rmse, '-> km^2 =', (np.exp(rmse) - 1) / 100)
 
     # Attenzione ai valori nulli per la normalizzazione
     print((y_test == 0).sum(), '/', len(y_test), 'of y_test is 0')
@@ -29,13 +30,14 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
     print('------------')
 
     # Calcola la precisione
-    precision_percentage = (1 - (mae / max_area)) * 100
+    precision_percentage = (1 - (rmse / max_area)) * 100
 
     print(f"Precisione del modello rispetto all'area massima: {precision_percentage:.2f}%")
+    print('------------')
 
-'''
+
     # Intervalli per la tolleranza dell'errore (in %)
-    tolerances = [0.05,0.1,0.3,1] 
+    tolerances = [0.05, 0.1, 0.25, 0.5] 
 
     # Calcolare l'errore relativo
     err_rel = np.abs(y_test - y_pred)
@@ -55,7 +57,7 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
         print(f'Accuracy in percentage (with a tolerance of {tolerance * 100}%): {accuracy_percentage:.2f}%')
    
     
-
+'''
  tolerances = [5,10,30,100] 
 
     # Calcolare l'errore relativo (errore assoluto / valore reale)
