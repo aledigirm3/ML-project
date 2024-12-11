@@ -169,3 +169,6 @@ notebook/templates/*.html
 # RTC
 docs/source/changelog.md
 docs/source/contributing.md
+
+# Other
+*.pdf
