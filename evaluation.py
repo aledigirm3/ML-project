@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 import numpy as np
 
 from sklearn.metrics import mean_absolute_error
@@ -44,6 +45,8 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
 
     # Normalizzazione Min-Max
     err_rel_norm = (err_rel - np.min(err_rel)) / (np.max(err_rel) - np.min(err_rel))
+    
+    err_dict = {}
 
     for tolerance in tolerances:
 
@@ -52,9 +55,25 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
 
         # Calcolare la percentuale di previsioni accettabili
         accuracy_percentage = np.mean(acceptable_predictions) * 100
+        
+        err_dict[f"{tolerance * 100}%"] = accuracy_percentage
 
         # Stampa l'accuratezza in percentuale
         print(f'Accuracy in percentage (with a tolerance of {tolerance * 100}%): {accuracy_percentage:.2f}%')
+        
+    
+    err_tolerances = list(err_dict.keys())
+    err_accuracies = list(err_dict.values())
+    
+        # Line Chart
+    plt.figure(figsize=(8, 5))
+    plt.plot(err_tolerances, err_accuracies, marker='o', color='orange', linestyle='-')
+    plt.xlabel('Tolerance (%)')
+    plt.ylabel('Accuracy (%)')
+    plt.title('Accuracy with tolerance')
+    plt.ylim(0, 100)
+    plt.grid()
+    plt.show()
    
     
 '''
