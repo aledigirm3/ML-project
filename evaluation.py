@@ -74,24 +74,3 @@ def evaluate(y_test, y_pred, y_train, y_train_pred, max_area):
     plt.ylim(0, 100)
     plt.grid()
     plt.show()
-   
-    
-'''
- tolerances = [5,10,30,100] 
-
-    # Calcolare l'errore relativo (errore assoluto / valore reale)
-    percent_err = (np.abs(y_test - y_pred) / max_area) * 100
-
-    for tolerance in tolerances:
-
-        # Verifica quante previsioni sono accettabili (errore relativo <= tolleranza)
-        result = percent_err <= tolerance
-
-        # Calcolare la percentuale di previsioni accettabili
-        accuracy_percentage = (np.sum(result) / len(result)) * 100
-
-        # Stampa l'accuratezza in percentuale
-        print(f'Accuracy in percentage (with a tolerance of {tolerance}%): {accuracy_percentage:.2f}%')
-
-
-        '''
